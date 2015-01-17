@@ -27,7 +27,7 @@ class game():
         
         #We pick a starting card with onlyNumerical = true so we dont start with an action card
         self.currentCard = self.deck.drawCard(1,True)
-        print "Current Play Card: " + str(self.getCurrentCard())
+        print ("Current Play Card: " + str(self.getCurrentCard()))
         
         #index of current player (players list)
         self.currentPlayer = 0;
@@ -51,8 +51,8 @@ class game():
     #Try to play a card
     def playCard(self,card,index):
         currentCard = self.getCurrentCard()
-        print index
-        print self.currentPlayer
+        print (index)
+        print (self.currentPlayer)
         if index == self.currentPlayer:
             if card.number == currentCard[0].number or card.color == currentCard[0].color:
                 self.currentCard[0] = card

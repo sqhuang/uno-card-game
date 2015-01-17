@@ -33,7 +33,7 @@ def printCards(cardGroup):
             lines["line7"] += "------------ "
         
         for x in range(0,8):
-            print lines["line"+str(x)] + "\r"
+            print (lines["line"+str(x)] + "\r")
     if sets > 0:
         for x in range(0,int(sets)*5,5):
             printFunction(x,(x + 5))
