@@ -11,8 +11,19 @@ class player():
         else:
             return False
         
-    def drawCard(self):
-        self.hand.extend(self.playerGame.deck.drawCard(1))
+    #Uno attack mode is a random draw of cards when a user needs a new card
+    #They randomly get between 0 and 5 cards every draw when enabled
+    def drawCard(self,unoAttackMode=None):
+        if unoAttackMode is None:
+            unoAttackMode = False
+        
+        numberToDraw = 1
+        
+        if unoAttackMode == True:
+            numberToDraw = int(math.floor(random.random() * 5))
+            print ("Uno attack mode!!")
+            
+        self.hand.extend(self.playerGame.deck.drawCard(numberToDraw))
         
     def getHand(self):
         return self.hand
