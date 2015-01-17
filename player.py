@@ -5,12 +5,10 @@ class player():
         self.playerGame = game
         
     def playCard(self,cardIndex):
-        if self.playerGame.playCard(self.hand[cardIndex]):
+        if self.playerGame.playCard(self.hand[cardIndex],self.playerNumber):
             self.hand.pop(cardIndex)
-            print ("Played Card!")
             return True
         else:
-            print ("Invalid Card Choice")
             return False
         
     def drawCard(self):
