@@ -32,6 +32,9 @@ class game():
         #index of current player (players list)
         self.currentPlayer = 0;
         
+        #which direction the flow is going
+        self.rotationManager = 1
+        
     #Get Deck Size/Remaining cards in deck
     def getDeckLength(self):
         return len(self.deck.cards)
@@ -48,6 +51,36 @@ class game():
     def getCurrentPlayer(self):
         return self.currentPlayer
     
+    #Forces all players to draw cards except for player who initialized
+    #draw2 and draw4
+    def drawAll(self,playerIndex,numberOfCards):
+        for x in range(0,len(self.players)):
+                if x != playerIndex:   
+                        self.players[x].deck.drawCard(numberOfCards)
+    
+    #Skip next player
+    def skipCard(self):
+        self.nextPlayer()
+ 
+    #reverse queue of rotation
+    #We manage the rotation by using a positive/negative 1 integer
+    #Every turn, the play() adds 1 * (rotationManager)
+    def reversePlay(self):
+        #negate rotationManager or bring back to positive
+        self.rotationManager *= -1
+       
+ 
+    def nextPlayer(self):
+        calculatedNextPlayer = self.getCurrentPlayer + (1 * self.rotationManager)
+       
+        if calculatedNextPlayer < 0:
+                calculatedNextPlayer = getNumPlayers()
+        elif: calculatedNextPlayer > getNumPlayers()
+                calculatedNextPlayer = 0
+        else:
+                #just a valid pick
+       
+        self.currentPlayer = calculatedNextPlayer
     #Try to play a card
     def playCard(self,card,index):
         currentCard = self.getCurrentCard()
